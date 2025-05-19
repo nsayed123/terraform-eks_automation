@@ -6,20 +6,6 @@ variable "aws_region" {
 
 }
 
-### Backend Config
-variable "backend_bucket" {
-
-}
-
-variable "backend_dynamodb_table" {
-
-}
-variable "backend_key" {
-
-}
-variable "backend_region" {
-
-}
 
 ### VPC, Subnets
 variable "vpc_name" {

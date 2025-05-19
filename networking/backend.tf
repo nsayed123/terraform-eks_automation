@@ -1,15 +1,14 @@
 
 
-
 terraform {
   required_version = ">= 1.3.0"
   backend "s3" {
-    bucket         = var.backend_bucket
-    key            = var.backend_key
-    region         = var.backend_region
-    dynamodb_table = var.backend_dynamodb_table
+    bucket         = "my-terraform-state-bucket-apsouth1"
+    key            = "networking/tst/terraform.tfstate"
+    region         = "ap-south-1"
+    dynamodb_table = "terraform-locks"
     encrypt        = true
-    profile        = var.aws_profile
+    profile        = "poc"
   }
 
   required_providers {
