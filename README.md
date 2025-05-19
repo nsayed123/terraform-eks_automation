@@ -88,10 +88,10 @@ ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
     NOTE: you can name this file whatever makes sense. ex: based on environments
 *** Important ***
 > These keys in the tfvars are important here these gets the subnet values from previous networking output state file. Please set these accordingly
->> network_tfstate_bucket
->> network_tfstate_key
->> network_tfstate_region
->> network_tfstate_profile
+>> network_tfstate_bucket <br />
+>> network_tfstate_key <br />
+>> network_tfstate_region <br />
+>> network_tfstate_profile <br />
 6. 
 ```
 terraform init
