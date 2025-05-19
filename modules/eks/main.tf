@@ -144,11 +144,11 @@ resource "kubernetes_config_map" "aws_auth" {
 
 resource "aws_security_group_rule" "allow_bastion_to_eks" {
   type                     = "ingress"
-  from_port               = 443
-  to_port                 = 443
-  protocol                = "tcp"
-  security_group_id       = aws_eks_cluster.this.vpc_config[0].cluster_security_group_id
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  security_group_id        = aws_eks_cluster.this.vpc_config[0].cluster_security_group_id
   source_security_group_id = var.bastion_sg_id
-  description             = "Allow Bastion to access EKS cluster"
-  depends_on = [ aws_eks_cluster.this ]
+  description              = "Allow Bastion to access EKS cluster"
+  depends_on               = [aws_eks_cluster.this]
 }

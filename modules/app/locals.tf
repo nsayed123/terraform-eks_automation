@@ -58,20 +58,20 @@ locals {
     }
 
     ingress = {
-  enabled           = true
-  ingressClassName  = var.ingress_class
-  path              = "/"  # ✅ Define path here
-  annotations = {
-    "cert-manager.io/cluster-issuer"             = "letsencrypt"
-    "nginx.ingress.kubernetes.io/rewrite-target" = "/"
-  }
-  hosts = [var.domain_name]  # ✅ List of strings
+      enabled          = true
+      ingressClassName = var.ingress_class
+      path             = "/" # ✅ Define path here
+      annotations = {
+        "cert-manager.io/cluster-issuer"             = "letsencrypt"
+        "nginx.ingress.kubernetes.io/rewrite-target" = "/"
+      }
+      hosts = [var.domain_name] # ✅ List of strings
 
-  tls = [{
-    secretName = "superset-tls"
-    hosts      = [var.domain_name]
-  }]
-}
+      tls = [{
+        secretName = "superset-tls"
+        hosts      = [var.domain_name]
+      }]
+    }
 
 
     supersetNode = {

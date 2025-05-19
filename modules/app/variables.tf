@@ -10,12 +10,12 @@ variable "namespace" {
 # }
 
 variable "postgres_host" {
-  type = string
+  type        = string
   description = "PostgreSQL hostname"
 }
 
 variable "domain_name" {
-  type = string
+  type        = string
   description = "Domain for Superset ingress (e.g. superset.example.com)"
 }
 
@@ -24,8 +24,8 @@ variable "ingress_class" {
   default = "public"
 }
 variable "postgres_secret_username" {
-  
+
 }
 variable "postgres_secret_password" {
-  
+
 }
