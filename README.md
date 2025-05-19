@@ -1,0 +1,1 @@
+# Terraform Module: Kubernetes Platform with Managed PostgreSQL
