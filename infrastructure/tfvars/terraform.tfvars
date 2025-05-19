@@ -2,11 +2,6 @@
 aws_profile = "poc"
 aws_region  = "ap-south-1"
 
-#### Backend Config
-backend_bucket         = "my-terraform-state-bucket-apsouth1"
-backend_key            = "eks-rds/tst/terraform.tfstate"
-backend_dynamodb_table = "terraform-locks"
-backend_region         = "ap-south-1"
 
 network_tfstate_bucket  = "my-terraform-state-bucket-apsouth1"
 network_tfstate_key     = "networking/tst/terraform.tfstate"

@@ -6,20 +6,6 @@ variable "aws_profile" {
 
 }
 
-### Backend Config
-variable "backend_bucket" {
-
-}
-
-variable "backend_dynamodb_table" {
-
-}
-variable "backend_key" {
-
-}
-variable "backend_region" {
-
-}
 
 
 ### Networking state output details
