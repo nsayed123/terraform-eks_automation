@@ -1,12 +1,12 @@
 terraform {
   required_version = ">= 1.3.0"
   backend "s3" {
-    bucket         = "my-terraform-state-bucket-apsouth1"
-    key            = "eks-rds/tst/terraform.tfstate"
-    region         = "ap-south-1"
-    dynamodb_table = "terraform-locks"
+    bucket         = var.backend_bucket
+    key            = var.backend_key
+    region         = var.backend_region
+    dynamodb_table = var.backend_dynamodb_table
     encrypt        = true
-    profile        = "poc"
+    profile        = var.aws_profile
   }
 
   required_providers {
@@ -29,9 +29,10 @@ terraform {
   }
 }
 
+
 provider "aws" {
-  region  = "ap-south-1"
-  profile = "poc"
+  region  = var.aws_region
+  profile = var.aws_profile
 }
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
