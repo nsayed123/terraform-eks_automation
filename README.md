@@ -25,3 +25,82 @@ This Terraform module sets up a complete Kubernetes-based application platform o
 ## 🧱 Prerequisites
 
 Before using this module, ensure the following are in place:
+- Terraform
+- aws cli
+- git (only to clone this repository)
+
+## Installation
+
+The commands below set everything up to run the examples:
+```
+$ git clone https://github.com/nsayed123/terraform-eks_automation.git
+```
+
+## NOTE:
+1. We will run networking and infrastructure(eks and rds)separately because our EKS will be setup private
+2. Create S3 bucket to save terraform state files and dynamodb for lock
+3. Before running the terraform init change the profile and region in the provider.tf file.
+4. Create an aws credentials profile.
+```
+aws configure --profile <profilename>
+```
+5. Update the profile name in the provider.tf.
+6. There is only SNS topic resource, subscription resource is not added we can add the Subscription resource block according to our required mode.
+7. Change the required values in terraform.tfvars
+
+
+## Run
+### Networking
+#### Steps
+1. Create S3 bucket to save terraform state file and dynamodb for lock
+2. Create ssh key in AWS i.e Key pairs
+3. 
+```
+cd terraform-eks_automation/networking
+```
+4. Configure the backend in backend.tf accordingly.
+5. Change the values under tfvars/terraform.tfvars files based on your requirements
+    NOTE: you can name this file whatever makes sense. ex: based on environments
+6. 
+```
+terraform init
+terraform plan -var-file=tfvars/tst.tfvars
+terraform apply -var-file=tfvars/tst.tfvars
+
+If everything looks good type `yes` and hit `Enter` 
+```
+This will set the base Netwokring for you. It will out the Public IP of the bastion. This machine is not public but will be available from your local has it has restriction in security group
+ssh into the bastion machine
+
+```
+ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
+```
+
+### infrastructure
+#### Steps
+1. Create S3 bucket to save terraform state file and dynamodb for lock
+2. 
+3. 
+```
+cd terraform-eks_automation/networking
+```
+4. Configure the backend in backend.tf accordingly.
+5. Change the values under tfvars/terraform.tfvars files based on your requirements
+    NOTE: you can name this file whatever makes sense. ex: based on environments
+6. 
+```
+terraform init
+terraform plan -var-file=tfvars/tst.tfvars
+terraform apply -var-file=tfvars/tst.tfvars
+
+If everything looks good type `yes` and hit `Enter` 
+```
+
+
+## Destroy
+If you want to destroy run
+```
+terraform destroy
+```
+
+
