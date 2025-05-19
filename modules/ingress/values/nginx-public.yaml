@@ -1,0 +1,12 @@
+controller:
+  ingressClassResource:
+    name: public
+    enabled: true
+    default: false
+    controllerValue: "k8s.io/ingress-nginx-public"
+  ingressClass: public
+  service:
+    annotations: {}
+    loadBalancerSourceRanges: []
+    externalTrafficPolicy: Cluster
+    type: LoadBalancer

@@ -1,0 +1,11 @@
+controller:
+  ingressClassResource:
+    name: private
+    enabled: true
+    default: false
+    controllerValue: "k8s.io/ingress-nginx-private"
+  ingressClass: private
+  service:
+    type: ClusterIP  # or use Internal LoadBalancer if on AWS
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-internal: "true"

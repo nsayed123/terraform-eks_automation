@@ -1,0 +1,33 @@
+# ingress:
+#   enabled: true
+#   ingressClassName: public
+#   annotations:
+#     kubernetes.io/ingress.class: "public"
+#     cert-manager.io/cluster-issuer: "letsencrypt"
+#   hosts:
+#     - host: "superset.tekioncloud.xyz"
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#   tls:
+#     - hosts:
+#         - "superset.tekioncloud.xyz"
+#       secretName: superset-tls
+
+# extraIngress:
+#   enabled: true
+#   name: internal
+#   ingressClassName: internal
+#   annotations:
+#     kubernetes.io/ingress.class: "internal"
+#     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+#     nginx.ingress.kubernetes.io/internal-ingress: "true"
+#   hosts:
+#     - host: superset.internal.example.com
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#   tls:
+#     - hosts:
+#         - superset.internal.example.com
+#       secretName: superset-internal-tls

@@ -52,14 +52,14 @@ aws configure --profile <profilename>
 ## Run
 ### Networking
 #### Steps
-1. Create S3 bucket to save terraform state file and dynamodb for lock
-2. Create ssh key in AWS i.e Key pairs
+1. Create S3 bucket to save terraform state file and dynamodb for lock.
+2. Create ssh key in AWS i.e Key pairs.
 3. 
 ```
 cd terraform-eks_automation/networking
 ```
 4. Configure the backend in backend.tf accordingly.
-5. Change the values under tfvars/terraform.tfvars files based on your requirements
+5. Change the values under tfvars/terraform.tfvars files based on your requirements.
     NOTE: you can name this file whatever makes sense. ex: based on environments
 6. 
 ```
@@ -69,8 +69,8 @@ terraform apply -var-file=tfvars/tst.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
-This will set the base Netwokring for you. It will out the Public IP of the bastion. This machine is not public but will be available from your local has it has restriction in security group
-ssh into the bastion machine
+This will set the base Networking for you. It will output the Public IP of the bastion. This machine is public but will be available from your local has it has restriction in security group. <br />
+ssh into the bastion machine.
 
 ```
 ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
@@ -79,14 +79,19 @@ ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
 ### infrastructure
 #### Steps
 1. Create S3 bucket to save terraform state file and dynamodb for lock
-2. 
-3. 
-```
-cd terraform-eks_automation/networking
-```
-4. Configure the backend in backend.tf accordingly.
+2. Once logged into bastion
+3. ``` git clone https://github.com/nsayed123/terraform-eks_automation.git ```
+4. ``` cd terraform-eks_automation/infrastructure ```
+5. Configure the backend in backend.tf accordingly.
+
 5. Change the values under tfvars/terraform.tfvars files based on your requirements
     NOTE: you can name this file whatever makes sense. ex: based on environments
+*** Important ***
+> These keys in the tfvars are important here these gets the subnet values from previous networking output state file. Please set these accordingly
+>> network_tfstate_bucket
+>> network_tfstate_key
+>> network_tfstate_region
+>> network_tfstate_profile
 6. 
 ```
 terraform init
