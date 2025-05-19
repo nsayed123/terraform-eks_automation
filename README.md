@@ -60,8 +60,8 @@ aws configure --profile <profilename>
 6. 
 ```
 terraform init
-terraform plan -var-file=tfvars/tst.tfvars
-terraform apply -var-file=tfvars/tst.tfvars
+terraform plan -var-file=tfvars/terrafrom.tfvars
+terraform apply -var-file=tfvars/terrafrom.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
@@ -91,8 +91,8 @@ ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
 6. 
 ```
 terraform init
-terraform plan -var-file=tfvars/tst.tfvars
-terraform apply -var-file=tfvars/tst.tfvars
+terraform plan -var-file=tfvars/terrafrom.tfvars
+terraform apply -var-file=tfvars/terrafrom.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
