@@ -6,7 +6,7 @@ terraform {
     bucket         = "my-terraform-state-bucket-apsouth1"
     key            = "eks-rds/tst/terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "terraform-locks"
+    use_lockfile  = true
     encrypt        = true
     profile        = "poc"
   }

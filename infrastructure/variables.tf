@@ -50,29 +50,9 @@ variable "rds_cluster_name" {
 }
 
 
-
-variable "bastion_allowed_ips" {
-  description = "CIDR blocks allowed to SSH into Bastion"
-  type        = list(string)
-}
-
-# variable "db_username" {
-#   type        = string
-#   description = "Database username"
-# }
-
-# variable "db_password" {
-#   type        = string
-#   description = "Database password"
-#   sensitive   = true
-# }
-
 variable "db_secret_name" {
 
 }
-# variable "superset_secret" {
-
-# }
 
 variable "dns_zone_name" {
 
