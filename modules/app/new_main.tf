@@ -73,6 +73,15 @@ resource "helm_release" "superset" {
         ]
         
       }
+      bootstrapScript = <<-EOT
+        #!/bin/bash
+        uv pip3 install .[postgres] \
+          .[bigquery] \
+          .[elasticsearch] &&\
+        pip3 install psycopg2-binary &&\
+        pip3 install pyhive &&\
+        if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap; fi
+      EOT
     })
   ]
   depends_on = [random_password.base64_key, kubernetes_job.create_superset_db]
