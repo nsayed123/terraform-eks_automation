@@ -9,7 +9,9 @@ resource "helm_release" "superset" {
       secretKey = local.secret_key_value
 
       configOverrides = {
-        SECRET_KEY = local.secret_key_value
+        secret = <<-EOT
+          SECRET_KEY = "${local.secret_key_value}"
+        EOT
       }
 
     #   init = {
