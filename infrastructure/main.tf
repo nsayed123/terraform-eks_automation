@@ -33,7 +33,7 @@ module "rds" {
 ### Ingress
 module "ingress" {
   source     = "../modules/ingress"
-  depends_on = [module.eks,module.rds]
+  depends_on = [module.eks]
 }
 
 

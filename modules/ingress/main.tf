@@ -6,11 +6,11 @@ terraform {
   }
 }
 
-resource "null_resource" "wait" {
-  provisioner "local-exec" {
-    command = "sleep 120"
-  }
-}
+# resource "null_resource" "wait" {
+#   provisioner "local-exec" {
+#     command = "sleep 120"
+#   }
+# }
 
 resource "helm_release" "nginx_ingress_public" {
   name       = "nginx-ingress-public"
@@ -20,6 +20,7 @@ resource "helm_release" "nginx_ingress_public" {
   version    = "4.10.0"
 
   create_namespace = true
+  wait       = true
 
   values = [
     file("${path.module}/values/nginx-public.yaml")
@@ -36,6 +37,7 @@ resource "helm_release" "nginx_ingress_private" {
   version    = "4.10.0"
 
   create_namespace = true
+  wait       = true
 
   values = [
     file("${path.module}/values/nginx-private.yaml")
@@ -46,5 +48,6 @@ resource "helm_release" "nginx_ingress_private" {
 resource "kubectl_manifest" "letsencrypt_clusterissuer" {
   yaml_body = file("${path.module}/values/cert-issuer.yaml")
   #   depends_on = [helm_release.cert_manager]
-  depends_on = [ null_resource.wait ]
+  wait_for_rollout = true
+  # depends_on = [ null_resource.wait ]
 }
