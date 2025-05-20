@@ -47,7 +47,7 @@ module "dns" {
   depends_on = [module.eks,module.rds]
 }
 
-value = 
+
 
 module "app" {
   source = "../modules/app"
