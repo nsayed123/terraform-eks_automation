@@ -293,10 +293,10 @@ supersetNode:
       enabled: false
       ssl_cert_reqs: CERT_NONE
     # You need to change below configuration incase bringing own PostgresSQL instance and also set postgresql.enabled:false
-    db_host: "db_host"
+    db_host: ""
     db_port: "5432"
     db_user: mydbuser
-    db_pass: "db_pass"
+    db_pass: ""
     db_name: superset
   env: {}
   # -- If true, forces deployment to reload on each upgrade
