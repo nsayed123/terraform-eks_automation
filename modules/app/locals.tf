@@ -1,5 +1,5 @@
 locals {
-  static_values_file = yamldecode(file("${path.module}/helm-values.yaml"))
+  static_values_file = file("${path.module}/helm-values.yaml")
   secret_key_value = base64encode(random_password.base64_key.result)
 
   config_overrides = {
