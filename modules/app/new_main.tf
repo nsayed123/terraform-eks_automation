@@ -22,11 +22,11 @@ resource "helm_release" "superset" {
         enabled = false
       }
 
-      externalDatabase = {
-        host     = var.postgres_host
-        username = var.postgres_secret_username
-        password = var.postgres_secret_password
-      }
+    #   externalDatabase = {
+    #     host     = var.postgres_host
+    #     username = var.postgres_secret_username
+    #     password = var.postgres_secret_password
+    #   }
 
       ingress = {
         enabled          = true
