@@ -55,6 +55,7 @@ module "app" {
   postgres_secret_password = local.db_secret.password
   tls_secret_name = "superset-tls"
   cluster_issuer = "letsencrypt"
+  depends_on = [module.eks]
 }
 
 

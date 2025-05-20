@@ -30,7 +30,7 @@ resource "helm_release" "superset" {
   name       = "superset"
   namespace  = var.namespace
   repository = "https://apache.github.io/superset"
-  chart      = "superset"
+  chart      = "superset/superset"
   version    = "0.14.2" # Update as needed
 
   # values = [
