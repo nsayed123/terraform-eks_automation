@@ -53,6 +53,11 @@ resource "helm_release" "superset" {
           "pip3 install psycopg2-binary pyhive && superset run -p 8088 --with-threads --reload --debugger"
         ]
         resources = {}
+        connections = {
+            db_host     = var.postgres_host
+            db_user = var.postgres_secret_username
+            db_pass = var.postgres_secret_password
+        }
       }
       supersetWorker = {
         replicas = {
@@ -64,6 +69,7 @@ resource "helm_release" "superset" {
           "-c",
           "pip3 install psycopg2-binary pyhive && celery --app=superset.tasks.celery_app:app worker"
         ]
+        
       }
     })
   ]
