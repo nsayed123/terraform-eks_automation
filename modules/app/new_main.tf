@@ -1,5 +1,5 @@
 resource "helm_release" "superset" {
-  name       = "superset"
+  name       = "mysuperset"
   repository = "https://apache.github.io/superset"
   chart      = "superset"
   version    = "0.14.2"
