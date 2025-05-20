@@ -1,4 +1,4 @@
-# Terraform Module: Kubernetes Platform with Managed PostgreSQL
+# Terraform Module: Kubernetes Platform with Managed PostgreSQL with Superset application deployment
 
 This Terraform module sets up a complete Kubernetes-based application platform on **AWS**, including:
 
@@ -7,6 +7,7 @@ This Terraform module sets up a complete Kubernetes-based application platform o
 - ✅ **NGINX ingress controllers** (public & private)
 - ✅ **Let's Encrypt TLS certificates via cert-manager**
 - ✅ **DNS records in Route53**
+- ✅ **Superset Application**
 
 ---
 
@@ -19,6 +20,7 @@ This Terraform module sets up a complete Kubernetes-based application platform o
   - Private ingress for internal services
 - **TLS Certificates** from Let's Encrypt using `cert-manager`
 - **DNS Automation** using AWS Route53
+- **Superset Application** using Terraform Helm
 
 ---
 
@@ -54,6 +56,8 @@ aws configure --profile <profilename>
 ```
 5. Update the profile name in the provider.tf.
 6. Change the required values in terraform.tfvars
+7. ingress and cert_manager is included in one single module ingress
+8. When you run terraform infrastructure  it will also deploy superset application
 
 
 ## Run
