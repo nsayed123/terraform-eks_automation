@@ -4,7 +4,7 @@ locals {
   config_overrides = {
     configOverrides = {
       secret = <<EOF
-      SECRET_KEY = "${random_password.secret_key.result}"
+      SECRET_KEY = "${random_bytes.secret_bytes.b64_std}"
       EOF
     }
   }
