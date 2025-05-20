@@ -305,7 +305,7 @@ supersetNode:
   # @default -- a container waiting for postgres
   initContainers:
     - name: wait-for-postgres
-      image: "apache/superset:dockerize"
+      image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
       imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
@@ -406,7 +406,7 @@ supersetWorker:
   # @default -- a container waiting for postgres and redis
   initContainers:
     - name: wait-for-postgres-redis
-      image: "apache/superset:dockerize"
+      image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
       imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
@@ -491,7 +491,7 @@ supersetCeleryBeat:
   # @default -- a container waiting for postgres
   initContainers:
     - name: wait-for-postgres-redis
-      image: "apache/superset:dockerize"
+      image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
       imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
@@ -587,7 +587,7 @@ supersetCeleryFlower:
   # @default -- a container waiting for postgres and redis
   initContainers:
     - name: wait-for-postgres-redis
-      image: "apache/superset:dockerize"
+      image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
       imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
@@ -754,7 +754,7 @@ init:
   # @default -- a container waiting for postgres
   initContainers:
     - name: wait-for-postgres
-      image: "apache/superset:dockerize"
+      image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
       imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
