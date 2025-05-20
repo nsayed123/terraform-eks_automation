@@ -3,7 +3,7 @@ resource "helm_release" "superset" {
   repository = "https://apache.github.io/superset"
   chart      = "superset"
   version    = "0.13.6"
-
+  wait_for_jobs = true
   values = [
     yamlencode({
       secretKey = local.secret_key_value
