@@ -52,7 +52,7 @@ resource "helm_release" "superset" {
         command = [
           "/bin/sh",
           "-c",
-          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /usr/bin/run-server.sh"
+          "chmod +x /app/pythonpath/superset_bootstrap.sh || true && pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /usr/bin/run-server.sh"
         ]
         resources = {}
         connections = {
@@ -69,7 +69,7 @@ resource "helm_release" "superset" {
         command = [
           "/bin/sh",
           "-c",
-          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
+          "chmod +x /app/pythonpath/superset_bootstrap.sh /app/pythonpath/superset_init.sh || true && pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
         ]
         
       }
@@ -79,7 +79,7 @@ resource "helm_release" "superset" {
         command = [
           "/bin/sh",
           "-c",
-          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /app/pythonpath/superset_init.sh"
+          "chmod +x /app/pythonpath/superset_bootstrap.sh /app/pythonpath/superset_init.sh || true && pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /app/pythonpath/superset_init.sh"
         ]
         
       }
@@ -90,7 +90,7 @@ resource "helm_release" "superset" {
           .[elasticsearch] &&\
         pip3 install psycopg2-binary &&\
         pip3 install pyhive &&\
-        if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap; fi
+        if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid 0" > ~/bootstrap; fi
       EOT
     })
   ]
