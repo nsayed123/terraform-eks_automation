@@ -52,7 +52,7 @@ resource "helm_release" "superset" {
         command = [
           "/bin/sh",
           "-c",
-          "pip3 install psycopg2-binary pyhive && superset run -p 8088 --with-threads --reload --debugger"
+          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /usr/bin/run-server.sh"
         ]
         resources = {}
         connections = {
@@ -69,7 +69,17 @@ resource "helm_release" "superset" {
         command = [
           "/bin/sh",
           "-c",
-          "pip3 install psycopg2-binary pyhive && celery --app=superset.tasks.celery_app:app worker"
+          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker"
+        ]
+        
+      }
+      init = {
+        enabled = true
+        
+        command = [
+          "/bin/sh",
+          "-c",
+          "pip3 install psycopg2-binary pyhive && /app/pythonpath/superset_bootstrap.sh; /app/pythonpath/superset_init.sh"
         ]
         
       }

@@ -58,7 +58,7 @@ bootstrapScript: |
     .[elasticsearch] &&\
   pip3 install psycopg2-binary \
     pip3 install pyhive &&\
-  if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap; fi
+  if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid 0" > ~/bootstrap; fi
 
 # -- The name of the secret which we will use to generate a superset_config.py file
 # Note: this secret must have the key superset_config.py in it and can include other files as well
@@ -278,7 +278,7 @@ supersetNode:
     - >
       pip3 install psycopg2-binary && \
       pip3 install pyhive && \
-      . {{ .Values.configMountPath }}/superset_bootstrap.sh; /usr/bin/run-server.sh
+      /app/pythonpath/superset_bootstrap.sh; /usr/bin/run-server.sh
   connections:
     # -- Change in case of bringing your own redis and then also set redis.enabled:false
     redis_host: "{{ .Release.Name }}-redis-headless"
@@ -399,7 +399,7 @@ supersetWorker:
     - >
       pip3 install psycopg2-binary && \
       pip3 install pyhive && \
-      . {{ .Values.configMountPath }}/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker
+      /app/pythonpath/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app worker
   # -- If true, forces deployment to reload on each upgrade
   forceReload: false
   # -- Init container
@@ -484,7 +484,7 @@ supersetCeleryBeat:
     - >
       pip3 install psycopg2-binary && \
       pip3 install pyhive && \
-      . {{ .Values.configMountPath }}/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app beat --pidfile /tmp/celerybeat.pid --schedule /tmp/celerybeat-schedule
+      /app/pythonpath/superset_bootstrap.sh; celery --app=superset.tasks.celery_app:app beat --pidfile /tmp/celerybeat.pid --schedule /tmp/celerybeat-schedule
   # -- If true, forces deployment to reload on each upgrade
   forceReload: false
   # -- List of init containers
@@ -737,7 +737,7 @@ init:
     - >
       pip3 install psycopg2-binary && \
       pip3 install pyhive && \
-      . {{ .Values.configMountPath }}/superset_bootstrap.sh; . {{ .Values.configMountPath }}/superset_init.sh
+      /app/pythonpath/superset_bootstrap.sh; /app/pythonpath/superset_init.sh
   enabled: true
   jobAnnotations:
     "helm.sh/hook": post-install,post-upgrade
