@@ -78,29 +78,29 @@ terraform apply -var-file=tfvars/terraform.tfvars
 If everything looks good type `yes` and hit `Enter` 
 ```
 This will set the base Networking for you. It will output the Public IP of the bastion. This machine is public but will be available from your local has it has restriction in security group. <br />
-ssh into the bastion machine.
+
+
+### infrastructure
+ssh into the bastion machine using the public IP from Networking output.
 
 ```
 ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
 ```
-
-### infrastructure
 #### Steps
 1. Create S3 bucket to save terraform state file and dynamodb for lock
 2. Once logged into bastion
 3. ``` git clone https://github.com/nsayed123/terraform-eks_automation.git ```
 4. ``` cd terraform-eks_automation/infrastructure ```
 5. Configure the backend in backend.tf accordingly.
-
-5. Change the values under tfvars/terraform.tfvars files based on your requirements
+6. Change the values under tfvars/terraform.tfvars files based on your requirements
     NOTE: you can name this file whatever makes sense. ex: based on environments <br />
 *** Important ***
-> These keys in the tfvars are important here these gets the subnet values from previous networking output state file. Please set these accordingly
+> These keys in the tfvars are important here these gets the subnet values from previous networking output state file. Please set these accordingly. Values of these are the backend details of networking infra.
 >> network_tfstate_bucket <br />
 >> network_tfstate_key <br />
 >> network_tfstate_region <br />
 >> network_tfstate_profile <br />
-6. 
+7. 
 ```
 terraform init
 terraform plan -var-file=tfvars/terraform.tfvars
@@ -108,10 +108,20 @@ terraform apply -var-file=tfvars/terraform.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
-7. Once the terraform apply is completed run the below command in the bastion machine
+8. Once the terraform apply is completed run the below command in the bastion machine
 ```
 aws eks update-kubeconfig --region <region> --name <your_cluster_mame>
+
 ```
+
+Verify if all the superset pods are running using below command
+```
+kubectl get po -A
+```
+
+Once Verified. Go to browser and hit the dns endpoint of superset application.
+
+
 ## Destroy
 If you want to destroy run in bation as well as on local to destroy both networking and infrastructure
 ```
