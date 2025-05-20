@@ -60,3 +60,18 @@ variable "dns_zone_name" {
 variable "dns_public_hostname" {
 
 }
+
+
+### superset application name
+variable "domain_name" {
+  
+}
+variable "ingress_class" {
+  
+}
+variable "tls_secret_name" {
+  
+}
+variable "cluster_issuer" {
+  
+}

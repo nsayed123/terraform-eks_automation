@@ -21,3 +21,10 @@ db_secret_name   = "postgres_credentials"
 
 dns_zone_name       = "tst-cs.tek.xyz"
 dns_public_hostname = "superset.tst-cs.tek.xyz"
+
+
+### Superset application
+domain_name = "superset.dev.tekioncloud.xyz"
+ingress_class = "public"
+tls_secret_name = "superset-tls"
+cluster_issuer = "letsencrypt"
