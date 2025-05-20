@@ -81,7 +81,7 @@ ssh -i <ap-south-1.pem> ec2-user@<bastion_public_ip>
 5. Configure the backend in backend.tf accordingly.
 
 5. Change the values under tfvars/terraform.tfvars files based on your requirements
-    NOTE: you can name this file whatever makes sense. ex: based on environments
+    NOTE: you can name this file whatever makes sense. ex: based on environments <br />
 *** Important ***
 > These keys in the tfvars are important here these gets the subnet values from previous networking output state file. Please set these accordingly
 >> network_tfstate_bucket <br />
