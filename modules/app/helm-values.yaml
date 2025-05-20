@@ -306,7 +306,7 @@ supersetNode:
   initContainers:
     - name: wait-for-postgres
       image: "apache/superset:dockerize"
-      imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
+      #imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
             name: "{{ tpl .Values.envFromSecret . }}"
@@ -407,7 +407,7 @@ supersetWorker:
   initContainers:
     - name: wait-for-postgres-redis
       image: "apache/superset:dockerize"
-      imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
+      #imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
             name: "{{ tpl .Values.envFromSecret . }}"
@@ -492,7 +492,7 @@ supersetCeleryBeat:
   initContainers:
     - name: wait-for-postgres-redis
       image: "apache/superset:dockerize"
-      imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
+      #imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
             name: "{{ tpl .Values.envFromSecret . }}"
@@ -588,7 +588,7 @@ supersetCeleryFlower:
   initContainers:
     - name: wait-for-postgres-redis
       image: "apache/superset:dockerize"
-      imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
+      #imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
             name: "{{ tpl .Values.envFromSecret . }}"
@@ -742,7 +742,7 @@ init:
   jobAnnotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": "before-hook-creation"
-  loadExamples: false
+  loadExamples: true
   createAdmin: true
   adminUser:
     username: admin
@@ -755,7 +755,7 @@ init:
   initContainers:
     - name: wait-for-postgres
       image: "apache/superset:dockerize"
-      imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
+      #imagePullPolicy: "{{ .Values.initImage.pullPolicy }}"
       envFrom:
         - secretRef:
             name: "{{ tpl .Values.envFromSecret . }}"
