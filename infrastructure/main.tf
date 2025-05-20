@@ -58,7 +58,7 @@ module "app" {
   postgres_secret_password = local.db_secret.password
   tls_secret_name = var.tls_secret_name
   cluster_issuer = var.cluster_issuer
-  depends_on = [module.eks,module.rds]
+  depends_on = [module.eks,module.rds,module.ingress]
 }
 
 
