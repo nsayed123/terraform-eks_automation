@@ -12,9 +12,9 @@ resource "helm_release" "superset" {
         SECRET_KEY = local.secret_key_value
       }
 
-      init = {
-        enabled = true
-      }
+    #   init = {
+    #     enabled = true
+    #   }
 
       postgresql = {
         enabled = false

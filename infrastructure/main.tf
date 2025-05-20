@@ -47,9 +47,11 @@ module "dns" {
   depends_on = [module.eks,module.rds]
 }
 
+
+
 module "app" {
   source = "../modules/app"
-  postgres_host = module.rds.db_endpoint
+  postgres_host = split(":", module.rds.endpoint)[0]
   domain_name = var.domain_name
   ingress_class = var.ingress_class
   postgres_secret_username = local.db_secret.username
