@@ -1,5 +1,5 @@
 locals {
-  static_values_file = yamldecode(file("${path.module}/helm-values.yaml"))
+  static_values_file = yamldecode(file("${path.module}/values/helm-values.yaml"))
   secret_key_value = base64encode(random_password.base64_key.result)
 
   config_overrides = {
@@ -36,7 +36,7 @@ locals {
     }
   }
 
-  merged_values = merge(local.static_values_file, local.dynamic_overrides, local.config_overrides)
+  merged_values = merge(local.static_values_file, local.dynamic_overrides, local.config_overrides, local.postgresql)
 }
 # locals {
 #   structured_values = {
