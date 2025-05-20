@@ -20,3 +20,7 @@ output "rds_endpoint" {
   value = module.rds.db_endpoint
   description = "RDS PostgreSQL Endpoint"
 }
+
+output "superset_web_url" {
+  value = module.app.superset_endpoint
+}
