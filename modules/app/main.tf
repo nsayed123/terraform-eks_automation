@@ -11,20 +11,11 @@
 # }
 
 
-resource "random_bytes" "secret_bytes" {
-  length = 32
+resource "random_password" "base64_key" {
+  length           = 42
+  special          = false
 }
 
-# resource "kubernetes_namespace" "superset" {
-#   metadata {
-#     name = var.namespace
-#   }
-# }
-
-# resource "local_file" "values_yaml" {
-#   content  = local.values_yaml
-#   filename = "${path.module}/values.yaml"
-# }
 
 resource "helm_release" "superset" {
   name       = "superset"

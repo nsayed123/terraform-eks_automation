@@ -214,7 +214,7 @@ service:
     http: nil
 
 ingress:
-  enabled: false
+  enabled: true
   ingressClassName: public
   annotations:
     kubernetes.io/ingress.class: "public"
