@@ -96,11 +96,14 @@ terraform apply -var-file=tfvars/terraform.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
-
-## Destroy
-If you want to destroy run
+7. once the terraform apply is completed run in the bastion machine
 ```
-terraform destroy
+aws eks update-kubeconfig --region <region> --name <your_cluster_mame>
+```
+## Destroy
+If you want to destroy run in bation as well as on local to destroy both networking and infrastructure
+```
+terraform destroy -var-file=tfvars/terraform.tfvars
 ```
 
 
