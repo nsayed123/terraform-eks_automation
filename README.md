@@ -34,6 +34,14 @@ Before using this module, ensure the following are in place:
 The commands below set everything up to run the Kubernetes Platform with Managed PostgreSQL:
 ```
 $ git clone https://github.com/nsayed123/terraform-eks_automation.git
+
+cd terraform-eks_automation
+
+it has 3 folder
+1. modules
+2. networking
+3. infrastructure
+
 ```
 
 ## NOTE:
