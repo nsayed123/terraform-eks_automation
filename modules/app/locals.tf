@@ -9,6 +9,9 @@ locals {
       EOF
     }
   }
+  init = {
+    enabled = true
+  }
   postgresql = {
       enabled = false
     }
@@ -36,7 +39,7 @@ locals {
     }
   }
 
-  merged_values = merge(local.static_values_file, local.dynamic_overrides, local.config_overrides, local.postgresql)
+  merged_values = merge(local.static_values_file, local.dynamic_overrides, local.config_overrides, local.postgresql, local.init)
 }
 # locals {
 #   structured_values = {
