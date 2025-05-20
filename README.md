@@ -105,5 +105,6 @@ If you want to destroy run in bation as well as on local to destroy both network
 ```
 terraform destroy -var-file=tfvars/terraform.tfvars
 ```
+type `yes` and hit `Enter` 
 
 
