@@ -29,3 +29,9 @@ variable "postgres_secret_username" {
 variable "postgres_secret_password" {
 
 }
+variable "cluster_issuer" {
+  
+}
+variable "tls_secret_name" {
+  
+}

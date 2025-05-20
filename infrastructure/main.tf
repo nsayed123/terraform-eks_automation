@@ -46,15 +46,16 @@ module "dns" {
   public_hostname = var.dns_public_hostname
 }
 
-# module "app" {
-#   source = "../modules/app"
-#   postgres_host = module.rds.db_endpoint
-#   domain_name = "superset1.tekioncloud.xyz"
-#   ingress_class = "public"
-#   postgres_secret_username = local.db_secret.username
-#   postgres_secret_password = local.db_secret.password
-
-# }
+module "app" {
+  source = "../modules/app"
+  postgres_host = module.rds.db_endpoint
+  domain_name = "superset1.tekioncloud.xyz"
+  ingress_class = "public"
+  postgres_secret_username = local.db_secret.username
+  postgres_secret_password = local.db_secret.password
+  tls_secret_name = "superset-tls"
+  cluster_issuer = "letsencrypt"
+}
 
 
 
