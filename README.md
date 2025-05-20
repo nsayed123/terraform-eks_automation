@@ -58,6 +58,7 @@ aws configure --profile <profilename>
 6. Change the required values in terraform.tfvars
 7. ingress and cert_manager is included in one single module ingress
 8. When you run terraform infrastructure  it will also deploy superset application
+9. There is one caveat. The infrastructure part will take more than 15 mins and the token of the eks will be for 15 mins and it get expired, will get error unauthorized. So please rerun the terraform apply. and it will fix the issue.
 
 
 ## Run
