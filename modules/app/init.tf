@@ -7,7 +7,7 @@ resource "kubernetes_secret" "postgres_admin" {
   data = {
     postgres_username = var.postgres_secret_username
     postgres_password = var.postgres_secret_password
-    postgres_host = var.postgres_host
+    postgres_host = split(":", var.postgres_host)[0]
     
   }
 }

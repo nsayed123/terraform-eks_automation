@@ -16,7 +16,7 @@
 #   value = module.eks.cluster_name
 # }
 
-# output "rds_endpoint" {
-#   value = module.rds.db_endpoint
-#   description = "RDS PostgreSQL Endpoint"
-# }
+output "rds_endpoint" {
+  value = module.rds.db_endpoint
+  description = "RDS PostgreSQL Endpoint"
+}
