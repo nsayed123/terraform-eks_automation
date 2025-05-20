@@ -17,18 +17,18 @@ resource "random_password" "base64_key" {
 }
 
 
-resource "helm_release" "superset" {
-  name       = "superset"
-  # namespace  = var.namespace
-  repository = "https://apache.github.io/superset"
-  chart      = "superset"
-  version    = "0.14.2" # Update as needed
+# resource "helm_release" "superset" {
+#   name       = "superset"
+#   # namespace  = var.namespace
+#   repository = "https://apache.github.io/superset"
+#   chart      = "superset"
+#   version    = "0.14.2" # Update as needed
 
-  # values = [
-  #   yamlencode(local.structured_values)
-  # ]
-  values = [
-    yamlencode(local.merged_values)
-  ]
-  depends_on = [random_password.base64_key, kubernetes_job.create_superset_db]
-}
+#   # values = [
+#   #   yamlencode(local.structured_values)
+#   # ]
+#   values = [
+#     yamlencode(local.merged_values)
+#   ]
+#   depends_on = [random_password.base64_key, kubernetes_job.create_superset_db]
+# }
