@@ -30,5 +30,5 @@ resource "helm_release" "superset" {
   values = [
     yamlencode(local.merged_values)
   ]
-  depends_on = [kubernetes_namespace.superset]
+  depends_on = [random_password.base64_key, kubernetes_job.create_superset_db]
 }
