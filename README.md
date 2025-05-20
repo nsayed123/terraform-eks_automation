@@ -96,7 +96,7 @@ terraform apply -var-file=tfvars/terraform.tfvars
 
 If everything looks good type `yes` and hit `Enter` 
 ```
-7. once the terraform apply is completed run in the bastion machine
+7. Once the terraform apply is completed run the below command in the bastion machine
 ```
 aws eks update-kubeconfig --region <region> --name <your_cluster_mame>
 ```
