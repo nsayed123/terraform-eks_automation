@@ -5,9 +5,9 @@ resource "kubernetes_secret" "postgres_admin" {
 
 
   data = {
-    postgres_username = base64encode(var.postgres_secret_username)
-    postgres_password = base64encode(var.postgres_secret_password)
-    postgres_host = base64encode(var.postgres_host)
+    postgres_username = var.postgres_secret_username
+    postgres_password = var.postgres_secret_password
+    postgres_host = var.postgres_host
     
   }
 }

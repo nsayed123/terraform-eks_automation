@@ -33,7 +33,7 @@ module "rds" {
 ### Ingress
 module "ingress" {
   source     = "../modules/ingress"
-  depends_on = [module.eks]
+  depends_on = [module.eks,module.rds]
 }
 
 
@@ -44,6 +44,7 @@ module "dns" {
   # alb_dns_records = [data.kubernetes_service.nginx_public.status[0].load_balancer[0].ingress[0].hostname]
   alb_dns_records = [local.alb_hostname]
   public_hostname = var.dns_public_hostname
+  depends_on = [module.eks,module.rds]
 }
 
 module "app" {
@@ -55,7 +56,7 @@ module "app" {
   postgres_secret_password = local.db_secret.password
   tls_secret_name = var.tls_secret_name
   cluster_issuer = var.cluster_issuer
-  depends_on = [module.eks]
+  depends_on = [module.eks,module.rds]
 }
 
 
