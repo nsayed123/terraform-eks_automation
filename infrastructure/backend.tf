@@ -28,6 +28,10 @@ terraform {
       source = "gavinbunney/kubectl"
       # version = "~> 1.14"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.7.2"
+    }
   }
 }
 
@@ -58,4 +62,6 @@ provider "kubectl" {
   token                  = data.aws_eks_cluster_auth.this.token
 }
 
-
+provider "random" {
+  
+}
